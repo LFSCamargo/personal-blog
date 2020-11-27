@@ -1,17 +1,35 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Luiz Fernando's Portifolio`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Luiz Fernando`,
+      summary: `Software Engineer/Lead, based on Brazil`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `My simple portifolio with projects and some articles`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `lXSLuizinho`,
+      github: `LFSCamargo`,
+      instagram: `luiziscoding`,
     },
   },
   plugins: [
+    `gatsby-plugin-sass`,
+    {
+      resolve: `@micalgenus/gatsby-plugin-github-avatar`,
+      options: {
+        username: `LFSCamargo`, // Github username
+        default: 44933973, // Github userid for default image
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -70,6 +88,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-remark-images",
+      options: {
+        maxWidth: 800,
+        showCaptions: true,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

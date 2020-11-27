@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/post/index.tsx`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -40,21 +40,54 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+  const disabledSlugs = ["/articles/", "/landing/", "/contact/", "/projects/"]
 
-      createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
+  const routes = [
+    {
+      path: "/",
+      component: path.resolve("./src/pages/landing/index.tsx"),
+    },
+    {
+      path: "/articles",
+      component: path.resolve("./src/pages/articles/index.tsx"),
+    },
+    {
+      path: "/contact",
+      component: path.resolve("./src/pages/contact/index.tsx"),
+    },
+    {
+      path: "/projects",
+      component: path.resolve("./src/pages/projects/index.tsx"),
+    },
+  ]
+
+  routes.map(route => {
+    createPage({
+      path: route.path,
+      component: route.component,
     })
+  })
+
+  if (posts.length > 0) {
+    posts
+      .filter(post => !disabledSlugs.includes(post.fields.slug))
+      .forEach((post, index) => {
+        const previousPostId = index === 0 ? null : posts[index - 1].id
+        const nextPostId =
+          index === posts.length - 1 ? null : posts[index + 1].id
+
+        if (disabledSlugs.includes(post.fields.slug)) return
+
+        createPage({
+          path: `/articles${post.fields.slug}`,
+          component: blogPost,
+          context: {
+            id: post.id,
+            previousPostId,
+            nextPostId,
+          },
+        })
+      })
   }
 }
 
