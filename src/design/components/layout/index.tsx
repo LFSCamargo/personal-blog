@@ -1,16 +1,31 @@
-import React, { PropsWithChildren } from "react"
+import React, { PropsWithChildren, useEffect } from "react"
+import { navigate } from "gatsby"
 import { Header, SEO } from ".."
 import { View } from "./styles"
+import { checkRoute } from "../../../utils/redirect"
 
 type Props = PropsWithChildren<{
-  title: string
+  title?: string
+  shouldShowHeader?: boolean
 }>
 
-export function Layout({ children, title }: Props): JSX.Element {
+export function Layout({
+  children,
+  title,
+  shouldShowHeader = true,
+}: Props): JSX.Element {
+  const { isRouteValid } = checkRoute()
+
+  useEffect(() => {
+    if (!isRouteValid) {
+      navigate("/404")
+    }
+  }, [isRouteValid])
+
   return (
     <>
-      <SEO title={title} />
-      <Header />
+      {title && <SEO title={title} />}
+      {shouldShowHeader && <Header />}
       <View>{children}</View>
     </>
   )
