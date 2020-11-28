@@ -46,6 +46,7 @@ export const ArticleSection = styled.section`
   }
   img,
   span {
+    max-width: 1000px !important;
     width: 100%;
   }
   p {

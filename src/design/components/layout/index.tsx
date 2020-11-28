@@ -14,14 +14,6 @@ export function Layout({
   title,
   shouldShowHeader = true,
 }: Props): JSX.Element {
-  const { isRouteValid } = checkRoute()
-
-  useEffect(() => {
-    if (!isRouteValid) {
-      navigate("/404")
-    }
-  }, [isRouteValid])
-
   return (
     <>
       {title && <SEO title={title} />}

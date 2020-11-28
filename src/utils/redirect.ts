@@ -24,11 +24,19 @@ export function checkRoute(): CheckRouteReturn {
   `)
 
   const validRoutes = [
-    ...allMarkdownRemark.edges.map(e => `/articles/${e.node.fields.slug}/`),
+    ...allMarkdownRemark.edges.map(e => `/articles${e.node.fields.slug}`),
     ...defaultRoutes,
   ]
 
+  const size = location.pathname.split("/").filter(e => e).length
+
+  if (size === 1 || location.pathname === "/") {
+    return {
+      isRouteValid: validRoutes.includes(location.pathname),
+    }
+  }
+
   return {
-    isRouteValid: validRoutes.includes(location.pathname),
+    isRouteValid: validRoutes.includes(`${location.pathname}/`),
   }
 }

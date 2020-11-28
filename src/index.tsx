@@ -1,10 +1,10 @@
 import React from "react"
-import { Layout } from "./design/components"
+import { ErrorBoundary } from "./design/components"
 
 interface Props {
-  element: React.ReactNode
+  element: JSX.Element
 }
 
 export default function RootComponent({ element }: Props): JSX.Element {
-  return <Layout shouldShowHeader={false}>{element}</Layout>
+  return <ErrorBoundary>{element}</ErrorBoundary>
 }
