@@ -45,19 +45,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const routes = [
     {
       path: "/",
-      component: path.resolve("./src/pages/landing/index.tsx"),
+      component: path.resolve("./src/screens/landing/index.tsx"),
     },
     {
       path: "/articles",
-      component: path.resolve("./src/pages/articles/index.tsx"),
+      component: path.resolve("./src/screens/articles/index.tsx"),
     },
     {
       path: "/contact",
-      component: path.resolve("./src/pages/contact/index.tsx"),
+      component: path.resolve("./src/screens/contact/index.tsx"),
     },
     {
       path: "/404",
-      component: path.resolve("./src/pages/404/index.tsx"),
+      component: path.resolve("./src/screens/404/index.tsx"),
     },
   ]
 
