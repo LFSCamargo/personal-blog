@@ -7,7 +7,6 @@ export function Header(): JSX.Element {
     <Wrapper>
       <PageName onClick={() => navigate("/")}>Luiz Fernando</PageName>
       <LinksWrapper>
-        <Links onClick={() => navigate("/")}>home</Links>
         <Links onClick={() => navigate("/articles")}>articles</Links>
         <Links onClick={() => navigate("/contact")}>contact</Links>
       </LinksWrapper>

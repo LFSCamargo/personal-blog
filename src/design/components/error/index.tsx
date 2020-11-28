@@ -1,19 +1,13 @@
+import React from "react"
 import { navigate } from "gatsby"
-import React, { useEffect } from "react"
-import { checkRoute } from "../../../utils/redirect"
-
 interface Props {
   children: JSX.Element
 }
-
-export function ErrorBoundary({ children }: Props) {
-  const { isRouteValid } = checkRoute()
-
-  useEffect(() => {
-    if (!isRouteValid) {
-      navigate("/404")
-    }
-  }, [isRouteValid])
-
-  return children
+export class ErrorBoundary extends React.Component<Props> {
+  componentDidCatch() {
+    navigate("/404")
+  }
+  render() {
+    return <>{this.props.children}</>
+  }
 }
