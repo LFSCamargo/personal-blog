@@ -64,7 +64,7 @@
   },
   "scripts": {
     "codegen": "graphql-codegen",
-    "build": "gatsby build && yarn serve",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
