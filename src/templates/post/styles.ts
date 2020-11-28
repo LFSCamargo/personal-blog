@@ -8,6 +8,7 @@ export const Content = styled.div`
   flex-direction: column;
   padding: 20px;
   margin-top: 50px;
+  padding-bottom: 50px;
 `
 
 export const ArticleImage = styled.img`
@@ -65,5 +66,5 @@ export const Separator = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin: 50px 0px;
 `

@@ -56,10 +56,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve("./src/pages/contact/index.tsx"),
     },
     {
-      path: "/projects",
-      component: path.resolve("./src/pages/projects/index.tsx"),
-    },
-    {
       path: "/404",
       component: path.resolve("./src/pages/404/index.tsx"),
     },

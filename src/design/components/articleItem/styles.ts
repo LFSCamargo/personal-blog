@@ -1,14 +1,14 @@
 import styled from "styled-components"
 import { Colors, Fonts } from "../../theme"
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ static: boolean }>`
   width: 90%;
   display: flex;
   flex-direction: column;
   margin-bottom: 100px;
   cursor: pointer;
   &:hover {
-    opacity: 0.5;
+    opacity: ${props => (props.static ? 1 : 0.5)};
   }
 `
 

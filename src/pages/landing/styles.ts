@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Avatar from "@micalgenus/gatsby-plugin-github-avatar"
-import { Fonts } from "../../design/theme"
+import { Colors, Fonts } from "../../design/theme"
 
 export const Content = styled.div`
   max-width: 1119px;
@@ -68,4 +68,29 @@ export const Separator = styled.div`
   align-items: center;
   justify-content: center;
   margin: 120px 0px;
+`
+
+export const Title = styled.h1`
+  font-size: 35px;
+  color: ${Colors.primary};
+  font-family: ${Fonts.playFair};
+  font-weight: 900;
+  line-height: 53px;
+  margin: 0px;
+`
+
+export const Description = styled.p`
+  font-family: ${Fonts.playFair};
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 45px;
+  color: ${Colors.primary};
+`
+
+export const ContentWrapper = styled.div`
+  margin-left: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `

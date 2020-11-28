@@ -46,13 +46,13 @@ export default function Contact() {
           </ContentDesc>
           <IconsRow>
             <Icon
-              onClick={() =>
-                openUrl("https://www.linkedin.com/in/luizfernando-lxspandora/")
-              }
+              onClick={() => openUrl("https://twitter.com/lXSLuizinho")}
               src="https://i.imgur.com/Ft69JqO.png"
             />
             <Icon
-              onClick={() => openUrl("https://twitter.com/lXSLuizinho")}
+              onClick={() =>
+                openUrl("https://www.linkedin.com/in/luizfernando-lxspandora/")
+              }
               src="https://i.imgur.com/6tuStiG.png"
             />
             <Icon

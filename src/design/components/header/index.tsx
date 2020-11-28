@@ -9,7 +9,6 @@ export function Header(): JSX.Element {
       <LinksWrapper>
         <Links onClick={() => navigate("/")}>home</Links>
         <Links onClick={() => navigate("/articles")}>articles</Links>
-        <Links onClick={() => navigate("/projects")}>projects</Links>
         <Links onClick={() => navigate("/contact")}>contact</Links>
       </LinksWrapper>
     </Wrapper>

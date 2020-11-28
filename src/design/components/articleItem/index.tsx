@@ -14,7 +14,8 @@ type Props = {
   description: string
   userName: string
   time: string
-  action: () => void
+  action?: () => void
+  isStatic?: boolean
 }
 
 export function ArticleItem({
@@ -22,10 +23,11 @@ export function ArticleItem({
   description,
   userName,
   time,
-  action,
+  action = () => {},
+  isStatic = false,
 }: Props) {
   return (
-    <Wrapper onClick={action}>
+    <Wrapper static={isStatic} onClick={action}>
       <Title>{title}</Title>
       <Description>{description}</Description>
       <UserInfoContainer>

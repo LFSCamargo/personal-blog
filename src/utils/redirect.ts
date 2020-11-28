@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import { QueryRes } from "./typings"
 
-const defaultRoutes = ["/", "/articles", "/projects", "/contact", "/404"]
+const defaultRoutes = ["/", "/articles", "/contact", "/404"]
 
 interface CheckRouteReturn {
   isRouteValid: boolean

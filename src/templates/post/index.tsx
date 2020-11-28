@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Snake } from "../../design/svg"
 import { Layout } from "../../design/components"
 import {
   ArticleDate,
@@ -8,6 +9,7 @@ import {
   ArticleSection,
   ArticleTitle,
   Content,
+  Separator,
 } from "./styles"
 
 type Props = {
