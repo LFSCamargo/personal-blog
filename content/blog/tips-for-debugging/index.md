@@ -92,70 +92,61 @@ const Root = () => {
 
 # React Dev Tools
 
-There's a chrome extension that you can add to chrome and inspect the react code props, state and context values; and it's called [React DevTools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) Install this to your chrome and go to the chrome developer tools and after go to: ``
+Now let's talk about real react debugging, do you know what React DevTools is?
 
-<!--
+It's a extension that you can install to your google chrome and see some cool information of your react website whole three
+like: Props, States and some Context things also. And also has a cool part of this extension that is the react profiler
+that you can check the performance of your react apps!
 
-I am sure that you already found a website with an image not loading, maybe you don't really cared that much, but a lot of users care and find it very irritating. It's something incredible simple to solve, that adds a solid value to your application/website.
+In order to install it click on the link bellow
 
-What we will build, is a image component that can handle broken images, by having a fallback URL.
-To start off, let's build a simple Image React component with Typescript.
+[React DevTools Chrome Webstore Installation](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
-```jsx
-interface Props {
-  url: string;
+So now that you installed the chrome devtools you can open the chrome devtools and you will notice that a some new tabs
+were added to it!! The Profiler and the Components:
+
+<img src="./devtools.png" />
+
+# Breaking Points
+
+Now let's talk about a thing that i use a lot to debug my react apps, i think its something that its more common on langs
+like C, C# and Java; but we can use it with JS on the browser and inside the VSCode also!
+
+NOTE: So to see the source code you need to have source map disabled on your React app under development!
+
+### Using the Chrome DevTools
+
+First open the Chrome developer tools and go to the sources tab under the localhost section, select the desired file,
+place a breaking point (By clicking on the line number that you want!) and reload the page and reproduce the expected
+behaviour and you will see that will stop on thatspecific point that you placed!
+
+<img src="./breakingpoints.png" />
+
+### Using the VSCode Extension
+
+Go to the vscode market place and install the Debugger for Chrome extension. And create a folder called `.vscode` on the
+root of your project and add a file called `launch.json` with the following content:
+
+```json
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
 }
-
-const Image: React.FC<Props> = ({ url, ...rest }) => <img src={url} {...rest} />
 ```
 
-As you can see, it's just a component that returns a `img` tag, now to add the fallback url we can use the property `onError` that the `img` tag has and almost no one knows about it.
+Now go to the debugging section inisde your vscode and press the `Run and Debug` button, it will open a separate chrome
+connected to your vscode, now place the breaking point and reload the page, and boom your vscode will stop on the desired
+line
 
-```jsx
-interface Props {
-  url: string;
-  fallback?: string;
-}
-
-const handleImageError = fallback => event => (event.target.src = fallback)
-
-const Image: React.FC<Props> = ({ url, fallback, ...rest }) => (
-  <img src={url} onError={handleImageError(fallback)} {...rest} />
-)
-```
-
-So if the main url fails, it will change the `src` from the image to the passed fallback url, which could be for example a default image. And it works! you can already try it, check the gif below on how to manually test it.
-
-![gif](./fallback-image.gif)
-
-Just change the URL to something non-existent and you will see that it will change the image source to the fallback one.
-Now, how to test it with Jest? After long and painful hours of trying to test it properly, I found (with the help of the community), a not-too-bad solution, it's not the best, but at least we can test it properly.
-
-```jsx
-import React from "react"
-import "@testing-library/jest-dom/extend-expect"
-import { render, fireEvent, screen } from "@testing-library/react"
-import Image from ".."
-
-const imageUrl =
-  "https://images.unsplash.com/photo-1531436107035-40b2e85b7a1b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;w=1000&amp;q=80"
-const fallbackUrl =
-  "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-const imageErrorUrl = "error://test"
-
-describe("Image", () => {
-  it("should render the fallback image if the main one has an error", () => {
-    render(<Image src={imageErrorUrl} fallback={fallbackUrl} />)
-
-    const image = screen.getByRole("img")
-    expect(image).toHaveAttribute("src", imageErrorUrl)
-    fireEvent.error(image) // Here we trigger the error event
-    expect(image).toHaveAttribute("src", fallbackUrl) // and check if the src changed
-  })
-})
-```
-
-Remembering we need the `@testing-library/jest-dom/extend-expect` to be able to use the `toHaveAttribute` property.
-It's a simple test, we are getting the image tag, forcing an error event to happen there, and checking if the image `src` has changed to the `fallbackUrl`.
-
-That's it! now you have a simple image component with a fallback, that you can reuse it in your application. -->
+<img src="./breakingpoints-vscode.png" />
