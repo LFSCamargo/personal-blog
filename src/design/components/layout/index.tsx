@@ -1,8 +1,6 @@
-import React, { PropsWithChildren, useEffect } from "react"
-import { navigate } from "gatsby"
+import React, { PropsWithChildren } from "react"
 import { Header, SEO } from ".."
 import { View } from "./styles"
-import { checkRoute } from "../../../utils/redirect"
 
 type Props = PropsWithChildren<{
   title?: string

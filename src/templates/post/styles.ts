@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Fonts } from "../../design/theme"
+import { Fonts } from "~/design/theme"
 
 export const Content = styled.div`
   max-width: 1000px;

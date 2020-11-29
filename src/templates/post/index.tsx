@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Layout } from "../../design/components"
+import { Layout } from "~/design/components"
 import {
   ArticleDate,
   ArticleDesc,

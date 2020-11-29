@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Lottie, { LottieProps } from "react-lottie"
-import { ContactUs } from "../../animations"
-import { Fonts } from "../../design/theme"
+import { ContactUs } from "~/animations"
+import { Fonts } from "~/design/theme"
 
 export const Content = styled.div`
   max-width: 1119px;

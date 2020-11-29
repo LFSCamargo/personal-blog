@@ -46,6 +46,7 @@
     "@types/react-helmet": "^6.1.0",
     "@types/react-lottie": "^1.2.5",
     "@types/styled-components": "^5.1.4",
+    "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sass": "^2.6.0",
     "gatsby-plugin-typescript": "^2.7.0",
     "prettier": "2.1.2"
