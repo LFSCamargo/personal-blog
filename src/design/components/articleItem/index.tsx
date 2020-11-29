@@ -33,7 +33,7 @@ export function ArticleItem({
       <UserInfoContainer>
         <UserPic />
         <UserAndTime>
-          {userName} <strong>{moment(time).format("ll")}</strong>
+          {userName} <strong>{time}</strong>
         </UserAndTime>
       </UserInfoContainer>
     </Wrapper>

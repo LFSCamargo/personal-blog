@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Snake } from "../../design/svg"
 import { Layout } from "../../design/components"
 import {
   ArticleDate,
@@ -9,49 +8,45 @@ import {
   ArticleSection,
   ArticleTitle,
   Content,
-  Separator,
 } from "./styles"
 
 type Props = {
   data: {
-    markdownRemark?: {
-      id: string
-      excerpt: string
-      html: string
-      frontmatter: {
-        title: string
-        date: string
-        description: string
-        image: {
-          id: string
-          childImageSharp: {
-            id: string
-            resolutions: {
-              src: string
-            }
-          }
+    contentfulBlogPost: {
+      contentful_id: string
+      postSlug: string
+      title: string
+      featuredImage: {
+        file: {
+          url: string
         }
       }
+      publishedDate: string
+      postBody: {
+        childMarkdownRemark: {
+          html: string
+        }
+      }
+      description: string
     }
   }
 }
 
 export default function PostTemplate({ data }: Props): JSX.Element {
-  const { frontmatter, html } = data.markdownRemark || {}
-  console.log(data)
+  const { description, featuredImage, publishedDate, postBody, title } =
+    data.contentfulBlogPost || {}
+
   return (
-    <Layout title={frontmatter.title}>
+    <Layout title={title}>
       <Content>
-        {frontmatter.image && (
-          <ArticleImage
-            src={frontmatter.image.childImageSharp.resolutions.src}
-          />
-        )}
-        <ArticleTitle>{frontmatter.title}</ArticleTitle>
-        <ArticleDesc>{frontmatter.description}</ArticleDesc>
-        <ArticleDate>{frontmatter.date}</ArticleDate>
+        {featuredImage.file && <ArticleImage src={featuredImage.file.url} />}
+        <ArticleTitle>{title}</ArticleTitle>
+        <ArticleDesc>{description}</ArticleDesc>
+        <ArticleDate>{publishedDate}</ArticleDate>
         <ArticleSection
-          dangerouslySetInnerHTML={{ __html: html }}
+          dangerouslySetInnerHTML={{
+            __html: postBody.childMarkdownRemark.html,
+          }}
           itemProp="articleBody"
         />
       </Content>
@@ -59,47 +54,24 @@ export default function PostTemplate({ data }: Props): JSX.Element {
   )
 }
 
-export const pageQuery = graphql`
-  query PostBySlug($id: String!, $previousPostId: String, $nextPostId: String) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    markdownRemark(id: { eq: $id }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-        image {
-          id
-          childImageSharp {
-            id
-            resolutions {
-              src
-            }
-          }
+export const query = graphql`
+  query PostBySlug($slug: String!) {
+    contentfulBlogPost(postSlug: { eq: $slug }) {
+      contentful_id
+      postSlug
+      title
+      featuredImage {
+        file {
+          url
         }
       }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
+      publishedDate(formatString: "DD dddd, MMM YYYY")
+      postBody {
+        childMarkdownRemark {
+          html
+        }
       }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
+      description
     }
   }
 `
