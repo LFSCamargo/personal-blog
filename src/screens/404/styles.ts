@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Lottie, { LottieProps } from "react-lottie"
-import { Error404 } from "../../animations"
+import { Error404 } from "~/animations"
 
 export const Wrapper = styled.div`
   display: flex;

@@ -1,8 +1,7 @@
 import { graphql, useStaticQuery, navigate } from "gatsby"
 import React, { useMemo } from "react"
-import { Layout, Button, ArticleItem } from "../../design/components"
-import { Snake } from "../../design/svg"
-import { Separator } from "../contact/styles"
+import { Layout, Button, ArticleItem } from "~/design/components"
+import { Snake } from "~/design/svg"
 import {
   Content,
   Col,
@@ -10,6 +9,7 @@ import {
   PageDesc,
   PageHeader,
   PageTitle,
+  Separator,
 } from "./styles"
 import { QueryRes } from "./typings"
 

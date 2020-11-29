@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Avatar from "@micalgenus/gatsby-plugin-github-avatar"
-import { Colors, Fonts } from "../../design/theme"
+import { Colors, Fonts } from "~/design/theme"
 
 export const Content = styled.div`
   max-width: 1119px;

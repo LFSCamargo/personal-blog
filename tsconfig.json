@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "noEmit": true,
+    "jsx": "react",
+    "rootDir": "src",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["src"]
+}

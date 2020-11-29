@@ -1,6 +1,6 @@
 import React from "react"
-import { Layout, Button } from "../../design/components"
-import { Snake } from "../../design/svg"
+import { Layout, Button } from "~/design/components"
+import { Snake } from "~/design/svg"
 import {
   Content,
   Col,

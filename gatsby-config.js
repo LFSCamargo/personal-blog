@@ -1,3 +1,5 @@
+const path = require("path")
+
 module.exports = {
   siteMetadata: {
     title: `Luiz Fernando's Portifolio`,
@@ -28,6 +30,12 @@ module.exports = {
         isTSX: true, // defaults to false
         jsxPragma: `jsx`, // defaults to "React"
         allExtensions: true, // defaults to false
+      },
+    },
+    {
+      resolve: "gatsby-plugin-root-import",
+      options: {
+        "~": path.join(__dirname, "src"),
       },
     },
     {
