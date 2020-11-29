@@ -14,21 +14,16 @@ import {
 import { QueryRes } from "./typings"
 
 export default function Articles() {
-  const { allMarkdownRemark } = useStaticQuery<QueryRes>(graphql`
-    query {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+  const { allContentfulBlogPost } = useStaticQuery<QueryRes>(graphql`
+    query ArticlesQuery {
+      allContentfulBlogPost {
         edges {
           node {
-            id
-            frontmatter {
-              date(formatString: "MMMM DD, YYYY")
-              title
-              description
-            }
-            fields {
-              slug
-            }
-            excerpt
+            contentful_id
+            postSlug
+            title
+            publishedDate(formatString: "DD dddd, MMM YYYY")
+            description
           }
         }
       }
@@ -37,25 +32,23 @@ export default function Articles() {
 
   const renderArticles = useMemo(
     () =>
-      allMarkdownRemark.edges.map(
+      allContentfulBlogPost.edges.map(
         ({
-          node: {
-            frontmatter: { date, title, description },
-            fields: { slug },
-          },
+          node: { contentful_id, title, description, publishedDate, postSlug },
         }) => {
           return (
             <ArticleItem
-              action={() => navigate(`/articles${slug}`)}
+              key={contentful_id}
+              action={() => navigate(`/articles/${postSlug}`)}
               title={title}
               description={description}
-              time={date}
+              time={publishedDate}
               userName="Luiz Fernando"
             />
           )
         }
       ),
-    [allMarkdownRemark]
+    [allContentfulBlogPost]
   )
 
   return (

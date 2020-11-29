@@ -1,11 +1,14 @@
 ## Pull Request Description
 
-<!-- What did changed? -->
+<!-- PR Description for the changes that were made -->
 
-## Kind of Change
+## Kind of Change 🔥
 
-<!-- The kind of change that have been made to the code -->
+<!-- The kind of change that were made to the website -->
 
-- [ ] Feature
-- [ ] Bug Fix
-- [ ] Blog Post
+- [ ] Feature (New stuff added to the website)
+- [ ] Bug Fix (Fixes something that is breaking)
+
+## Checklist ⚡️
+
+- [ ] Added Unit testing?
