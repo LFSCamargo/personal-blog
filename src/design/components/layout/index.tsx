@@ -7,6 +7,7 @@ type Props = PropsWithChildren<{
   shouldShowHeader?: boolean
 }>
 
+/** @description - the layout component contains the helmet and the header3 */
 export function Layout({
   children,
   title,

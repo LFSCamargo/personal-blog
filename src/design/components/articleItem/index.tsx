@@ -17,6 +17,7 @@ type Props = {
   isStatic?: boolean
 }
 
+/** @description - It's the item that will me mapped on the Article Item */
 export function ArticleItem({
   title,
   description,

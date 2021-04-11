@@ -12,6 +12,7 @@ interface Props {
   title: string
 }
 
+/** @description - The SEO default component that will be rendered with description, title, for better unfurling */
 export function SEO({ description, lang, meta, title }: Props): JSX.Element {
   const { site } = useStaticQuery(
     graphql`

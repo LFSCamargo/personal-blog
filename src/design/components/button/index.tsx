@@ -7,6 +7,7 @@ export type ButtonProps = {
   style?: React.CSSProperties
 }
 
+/** @description - It's the button component */
 export function Button({ text, action = () => {}, style = {} }: ButtonProps) {
   return (
     <Wrapper style={style} onClick={action}>
