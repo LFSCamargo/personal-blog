@@ -22,7 +22,7 @@ export default function Landing() {
           <Col>
             <PageDesc>
               My name is <strong>Luiz Fernando</strong> i’m a software engineer,
-              currently as a Tech Lead at Provi Capital.
+              currently as a Senior Fullstack Engineer at X-Team
             </PageDesc>
             <Button text="Read more about myself" />
           </Col>
@@ -36,7 +36,7 @@ export default function Landing() {
         <ContentWrapper>
           <Title>About myself</Title>
           <Description>
-            I’m a tech lead based on Brazil, working at Provi.
+            I'm a software engineer based in Brazil that is trying to change the world with programming
             <br />
             <br />
             I’ve always been interested in technology, i’ve always played games
@@ -51,11 +51,12 @@ export default function Landing() {
             learned how to code in Javascript, React, React-Native, Node.js,
             GraphQL and Relay Modern, and since them i’ve built my career on top
             of Javascript and i got into some great companies like Shawee,
-            Popstand, Platform Builders and Urbit City.
+            Popstand, Platform Builders, Urbit City and Provi.
             <br />
             <br />
-            And now i’m facing a pretty big challenge that is leading people and
-            help them improoving them career inside the tech market.
+            And right now i'm on the peak of the mountain that is my career, 
+            i'm currently at X-Team and realizing a dream working at Riot Games as as contractor,
+            and it's being a challenging and exciting opportunity
           </Description>
         </ContentWrapper>
       </Content>

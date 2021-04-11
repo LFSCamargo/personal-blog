@@ -55,7 +55,7 @@ export const PageDesc = styled.p`
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
-  width: 400px;
+  width: 450px;
   color: #000000;
   strong {
     font-weight: 900;
